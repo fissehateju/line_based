@@ -1,11 +1,11 @@
-﻿using LBDD.Dataplane;
-using LBDD.Properties;
-using LBDD.ui;
+using RR.Dataplane;
+using RR.Properties;
+using RR.ui;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LBDD.db
+namespace RR.db
 {
     /// <summary>
     /// Interaction logic for NetwokImport.xaml
@@ -29,21 +29,27 @@ namespace LBDD.db
             // set the size of the network:
             // area_300_m2
             string[] arr = Settings.Default.NetworkName.Split('_');
-            if (arr.Length == 3)
-            {
-                PublicParamerters.NetworkSquareSideLength = System.Convert.ToDouble(arr[1]);
-                MainWindow.Canvas_SensingFeild.Height = PublicParamerters.NetworkSquareSideLength;
-                MainWindow.Canvas_SensingFeild.Width = PublicParamerters.NetworkSquareSideLength;
-            }
-            else
-            {
-                PublicParamerters.NetworkSquareSideLength = 550;
-                MainWindow.Canvas_SensingFeild.Height = PublicParamerters.NetworkSquareSideLength;
-                MainWindow.Canvas_SensingFeild.Width = PublicParamerters.NetworkSquareSideLength;
-            }
+            //if (arr.Length == 3)
+            //{
+            //    PublicParamerters.NetworkSquareSideLength = System.Convert.ToDouble(arr[1]);
+            //    MainWindow.Canvas_SensingFeild.Height = PublicParamerters.NetworkSquareSideLength;
+            //    MainWindow.Canvas_SensingFeild.Width = PublicParamerters.NetworkSquareSideLength;
+            //}
+            //else
+            //{
+            //    PublicParamerters.NetworkSquareSideLength = 550;
+            //    MainWindow.Canvas_SensingFeild.Height = PublicParamerters.NetworkSquareSideLength;
+            //    MainWindow.Canvas_SensingFeild.Width = PublicParamerters.NetworkSquareSideLength;
+            //}
 
 
-            //
+            PublicParamerters.MainWindow.Canvas_SensingFeild.Width = System.Convert.ToDouble(arr[1]);
+            MainWindow.Canvas_SensingFeild.Width = System.Convert.ToDouble(arr[1]);
+
+            PublicParamerters.MainWindow.Canvas_SensingFeild.Height = System.Convert.ToDouble(arr[2]);
+            MainWindow.Canvas_SensingFeild.Height = System.Convert.ToDouble(arr[2]);
+
+            PublicParamerters.NetworkSquareSideLength = MainWindow.Canvas_SensingFeild.Height;
 
             foreach (ImportedSensor imsensor in ImportedSensorSensors)
             {
